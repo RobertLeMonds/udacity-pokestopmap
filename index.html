@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -6,10 +7,29 @@
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
 	<title>Pokestop Mini-Map</title>
 </head>
-  <header class="top-header">
 
-  </header>
 <body>
-	
+	<div class="container">
+	<header class="top-header"></header>
+
+	<aside class="filter">
+		<h3>Map Filter</h3>
+		<div class="row">
+  			
+  			<div class="myButton inner" id="distance">Distance</div>
+  			<div class="myButton inner" id="ratings">Ratings</div>
+  			<div class="myButton inner" id="all">All</div>
+		
+		</div>
+	</aside>
+	<div id="map"></div>
+	</div>
+
+
+<script type="text/javascript" src="js/map.js"></script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApYiQgECKjylTjuK9719PfMACTs5pGnwg&v=3&callback=initMap">
+</script>
+<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 </body>
 </html>
