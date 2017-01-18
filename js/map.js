@@ -1,5 +1,6 @@
       var map;
       // Create a new blank array for all the listing markers.
+      var self = this;
       // Google Maps style contribution of Snazzymaps.com
       // Made by JulienJ - https://snazzymaps.com/style/70868/pokemon-go-style
       var style = [{
@@ -98,6 +99,10 @@
         }]
       }]
       var markers = [];
+        //Message for Google Maps failing.
+  this.mapRequestTimeout = setTimeout(function() {
+    $('#map').html('Oops, it seems that you are lost. Google Maps is unable to load to help you. Please Refresh or try again later.');
+  }, 8000);
 
       function initMap() {
         // Constructor creates a new map - only center and zoom are required.
@@ -109,38 +114,10 @@
           zoom: 13,
           styles: style
         });
-        // These are the Pokestop Locations near Northstar Mall San Antonio, TX.
-        var locations = [{
-          title: 'Slackers',
-          location: {
-            lat: 29.5161377,
-            lng: -98.4978737
-          }
-        }, {
-          title: 'Alamo Drafthouse Cinema',
-          location: {
-            lat: 29.5181499,
-            lng: -98.5051367
-          }
-        }, {
-          title: 'Jims Restaurant',
-          location: {
-            lat: 29.5197297,
-            lng: -98.5081427
-          }
-        }, {
-          title: 'Diversions Game Room',
-          location: {
-            lat: 29.530484,
-            lng: -98.4987076
-          }
-        }, {
-          title: 'Freebirds',
-          location: {
-            lat: 29.5223566,
-            lng: -98.4956672
-          }
-        }];
+
+        clearTimeout(self.mapRequestTimeout);
+
+
         var largeInfowindow = new google.maps.InfoWindow();
         var bounds = new google.maps.LatLngBounds();
         // The following group uses the location array to create an array of markers on initialize.
@@ -158,6 +135,7 @@
           var marker = new google.maps.Marker({
             position: position,
             title: title,
+            address: address,
             animation: google.maps.Animation.DROP,
             icon: image,
             id: i
@@ -180,7 +158,7 @@
         // Check to make sure the infowindow is not already opened on this marker.
         if (infowindow.marker != marker) {
           infowindow.marker = marker;
-          infowindow.setContent('<div>' + marker.title + '</div>');
+          infowindow.setContent('<div>' + marker.title + marker.address + '</div>');
           infowindow.open(map, marker);
           // Make sure the marker property is cleared if the infowindow is closed.
           infowindow.addListener('closeclick', function() {
