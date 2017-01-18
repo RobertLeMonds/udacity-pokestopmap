@@ -1,11 +1,16 @@
       var map;
       // Create a new blank array for all the listing markers.
+
+      // Google Maps style contribution of Snazzymaps.com
+      // Made by JulienJ - https://snazzymaps.com/style/70868/pokemon-go-style
+      var style =[{"featureType":"all","elementType":"geometry.fill","stylers":[{"color":"#c4e8c7"}]},{"featureType":"landscape.man_made","elementType":"geometry.stroke","stylers":[{"color":"##000000"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"on"}]},{"featureType":"poi.park","elementType":"geometry.fill","stylers":[{"color":"#a9daba"}]},{"featureType":"road","elementType":"geometry.fill","stylers":[{"color":"#b6a7a3"}]},{"featureType":"road","elementType":"geometry.stroke","stylers":[{"color":"#f3f5e7"},{"weight":"0.01"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"simplified"}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"weight":"0.01"}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"color":"#b6a7a3"}]},{"featureType":"road.arterial","elementType":"geometry.stroke","stylers":[{"color":"#f3f5e7"}]},{"featureType":"road.local","elementType":"geometry.fill","stylers":[{"color":"#b6a7a3"}]},{"featureType":"road.local","elementType":"geometry.stroke","stylers":[{"color":"#f3f5e7"},{"weight":"0.01"}]},{"featureType":"transit.line","elementType":"geometry.fill","stylers":[{"color":"#a1a0a0"}]},{"featureType":"water","elementType":"geometry.fill","stylers":[{"color":"#65cee2"}]},{"featureType":"water","elementType":"labels","stylers":[{"visibility":"on"}]}]
       var markers = [];
       function initMap() {
         // Constructor creates a new map - only center and zoom are required.
         map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 29.5186602, lng: -98.520355},
-          zoom: 13
+          zoom: 13,
+          styles: style
         });
         // These are the real estate listings that will be shown to the user.
         // Normally we'd have these in a database instead.
