@@ -120,6 +120,7 @@ var map;
 
         var largeInfowindow = new google.maps.InfoWindow();
         var bounds = new google.maps.LatLngBounds();
+
         // The following group uses the location array to create an array of markers on initialize.
         for (var i = 0; i < locations.length; i++) {
           // Get the position from the location array.
@@ -149,8 +150,8 @@ var map;
           });
           bounds.extend(markers[i].position);
         }
-        document.getElementById('distance').addEventListener('click', showDistance);
-        document.getElementById('ratings').addEventListener('click', showRatings);
+        document.getElementById('pokestops').addEventListener('click', showPokestops);
+        document.getElementById('gyms').addEventListener('click', showGyms);
       }
       // This function populates the infowindow when the marker is clicked. We'll only allow
       // one infowindow which will open at the marker that is clicked, and populate based
@@ -159,7 +160,7 @@ var map;
         // Check to make sure the infowindow is not already opened on this marker.
         if (infowindow.marker != marker) {
           infowindow.marker = marker;
-          infowindow.setContent('<div>' + marker.title + '</div>');
+          infowindow.setContent('<div>' + marker.title + '<br>' + marker.address + '</div>');
           infowindow.open(map, marker);
           // Make sure the marker property is cleared if the infowindow is closed.
           infowindow.addListener('closeclick', function() {
@@ -168,7 +169,7 @@ var map;
         }
       }
       //This function will loop through the markers array and display them all.
-      function showDistance() {
+      function showPokestops() {
         var bounds = new google.maps.LatLngBounds();
         //Extend the boundaries of the map for each marker and display the marker
         for (var i = 0; i < markers.length; i++) {
@@ -178,7 +179,7 @@ var map;
         map.fitBounds(bounds);
       }
       //This function will loop through the listings and hide them all.
-      function showRatings() {
+      function showGyms() {
         for (var i = 0; i < markers.length; i++) {
           markers[i].setMap(null);
         }
