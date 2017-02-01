@@ -96,7 +96,7 @@ var style = [{
         stylers: [{
             visibility: "on"
         }]
-    }]
+    }];
 
 var infoWindow = new google.maps.InfoWindow({
     content: '<div><h4 id="pokestop-name"></h4><p id="pokestop-address"></p><p id="yelp"></p></div>'
