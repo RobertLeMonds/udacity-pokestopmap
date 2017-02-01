@@ -105,7 +105,7 @@ var infoWindow = new google.maps.InfoWindow({
 /* Viewmodel of course */
 ViewModel = function() {
         "use strict";
-        var a = this;
+        var self = this;
         self.pokestopList = ko.observableArray([]);
         self.filteredPokestopList = ko.observableArray([]);
         self.initialize = function() {
