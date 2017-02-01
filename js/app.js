@@ -103,8 +103,8 @@ var infoWindow = new google.maps.InfoWindow({
 });
 
 /* Viewmodel of course */
-ViewModel = function() {
- "use strict";
+var ViewModel = function() {
+ 'use strict';
  var self = this;
  self.pokestopList = ko.observableArray([]);
  self.filteredPokestopList = ko.observableArray([]);
@@ -235,6 +235,7 @@ ViewModel = function() {
     $("#yelp").attr("src", response.businesses[0].rating_img_url);
     $("#yelp-url").attr("href", response.businesses[0].url);
    },
+   /* DATA NOT AVAILABLE FOR INFOWINDOW */
    error: function() {
     $("#text").html("Data could not be retrieved from yelp!");
    }
