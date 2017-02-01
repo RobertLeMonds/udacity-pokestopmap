@@ -5,15 +5,15 @@
 	<meta charset="UTF-8">
 	<meta content="width=device-width" name="viewport">
 	<title>Pokemon Go Mini-Map</title>
-	<link href="css/styles.css" rel="stylesheet" type="text/css">
+	<link href="css/styles.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans|VT323" rel="stylesheet">
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeGSr9FCBSA6gXV26k6GWPC4wrXJxMlcc">
+	<script asysnc src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeGSr9FCBSA6gXV26k6GWPC4wrXJxMlcc" onerror="googleError()">
 	</script>
 </head>
 
 <body>
-	<div class="container">
-		<div class="col-2">
+	<main class="container">
+		<section class="col-2">
 			<section class="list-search">
 				<h3>Search Gym<br>
 				or<br>
@@ -30,16 +30,16 @@
 					</li>
 				</ul>
 			</section>
-		</div>
+		</section>
 
 
-		<div class="col-8">
+		<section class="col-8">
 			<div id="map-container">
 				<div class="main-map" id="google-map">
 				</div>
 			</div>
-		</div>
-	</div>
+		</section>
+	</main>
 	<script src="js/lib/jQuery.js">
 	</script> 
 	<script src="js/lib/knockout-3.2.0.js">
