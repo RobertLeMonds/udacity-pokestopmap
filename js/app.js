@@ -105,6 +105,8 @@ var infoWindow = new google.maps.InfoWindow({
 /* Viewmodel of course */
 var ViewModel = function() {
  'use strict';
+
+ console.log("applyBindings");
  var self = this;
  self.query = ko.observable("");
  self.pokestopList = ko.observableArray([]);
