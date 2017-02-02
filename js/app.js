@@ -106,6 +106,7 @@ var infoWindow = new google.maps.InfoWindow({
 var ViewModel = function() {
  'use strict';
  var self = this;
+ self.query = ko.observable("");
  self.pokestopList = ko.observableArray([]);
  self.filteredPokestopList = ko.observableArray([]);
  self.initialize = function() {
@@ -167,11 +168,11 @@ var ViewModel = function() {
  };
 
  
-  self.filterPokestops = function() {
+  self.filterPokestops = ko.computed(function() {
 
   self.filteredPokestopList([]);
 
-  var searchString = $("#poke-str").val().toLowerCase();
+  var searchString = self.query().toLowerCase();
   var len = self.pokestopList().length;
   /* Loops through the array list */
   for (var i = 0; i < len; i++) {
@@ -187,7 +188,7 @@ var ViewModel = function() {
     self.pokestopList()[i].marker().setVisible(false);
    }
   }
- }; 
+ }); 
 
  self.getYelpData = function(pokestop) {
 
