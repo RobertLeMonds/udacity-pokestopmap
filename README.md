@@ -3,6 +3,8 @@
 ##Get Started
 
 1. Either go to the github pages [site](https://robertlemonds.github.io/udacity-pokestopmap/) or download repository.
+	
+	*If the app is downloaded via Github onto your local machine, navigate to the index.html file and open in your browser.
 
 2. Once you are on the site or the repository is downloaded you can begin using the Pokemon Go Mini-Map by typing in the search bar (either exact keyword or by pokestop/gym).
 

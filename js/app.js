@@ -147,6 +147,7 @@ var ViewModel = function() {
    '<p id="text">Rating on <a id="yelp-url">yelp</a>: ' +
    '<img id="yelp"></p></div>';
 
+  /* SETS CONTENT FOR INFOWINDOW */
   infoWindow.setContent(infoContent);
   self.getYelpData(pokestop);
 
@@ -165,7 +166,8 @@ var ViewModel = function() {
   }, 750);
  };
 
- self.filterPokestops = function() {
+ 
+  self.filterPokestops = function() {
 
   self.filteredPokestopList([]);
 
@@ -185,13 +187,14 @@ var ViewModel = function() {
     self.pokestopList()[i].marker().setVisible(false);
    }
   }
- };
+ }; 
 
  self.getYelpData = function(pokestop) {
 
   /*o-auth used to pull YELP API data */
   var httpMethod = "GET";
   var yelpURL = "http://api.yelp.com/v2/search/";
+
   var nonce = function(length) {
    var text = "";
    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -254,7 +257,7 @@ var ViewModel = function() {
 };
 
 var Pokestop = function(data) {
- "use strict";
+ 'use strict';
 
  /* Knockout Observables */
  var marker;
