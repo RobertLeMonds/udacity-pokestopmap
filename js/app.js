@@ -2,6 +2,10 @@
 var map;
 //Style credit: Snazzymaps.com
 // Made by JulienJ - https://snazzymaps.com/style/70868/pokemon-go-style
+var googleError = function() {
+  alert('The map could not be loaded. Please try again later.');
+};
+
 var style = [{
  featureType: "all",
  elementType: "geometry.fill",
@@ -97,6 +101,9 @@ var style = [{
   visibility: "on"
  }]
 }];
+
+
+ function initMap() {
 
 var infoWindow = new google.maps.InfoWindow({
  content: '<div><h4 id="pokestop-name"></h4><p id="pokestop-address"></p><p id="yelp"></p></div>'
@@ -291,3 +298,4 @@ var Pokestop = function(data) {
 
 /* Run Knockout */
 ko.applyBindings(new ViewModel);
+}
