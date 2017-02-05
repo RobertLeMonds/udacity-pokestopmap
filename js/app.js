@@ -113,7 +113,7 @@ var infoWindow = new google.maps.InfoWindow({
 var ViewModel = function() {
  'use strict';
 
- console.log("applyBindings");
+
  var self = this;
  self.query = ko.observable("");
  self.pokestopList = ko.observableArray([]);
@@ -237,25 +237,26 @@ var ViewModel = function() {
 
   parameters.oauth_signature = signature;
 
-  /* AJAX settings */
-  var ajaxSettings = {
+  var errorTimeout = setTimeout(function() {
+    alert("Something went wrong");
+  }, 9000);
+
+  /* AJAX Request to YELP */
+  $.ajax({
    url: yelpURL,
    data: parameters,
    cache: true,
    dataType: "jsonp",
    success: function(response) {
     /* Displays YELP rating */
+    clearTimeout(errorTimeout);
+
+/*
     $("#yelp").attr("src", response.businesses[0].rating_img_url);
     $("#yelp-url").attr("href", response.businesses[0].url);
-   },
-   /* DATA NOT AVAILABLE FOR INFOWINDOW */
-   error: function() {
-    $("#text").html("Data could not be retrieved from yelp!");
+*/
    }
-  };
-
-  /* AJAX Request to YELP */
-  $.ajax(ajaxSettings);
+  });
  };
 
  google.maps.event.addDomListener(window, "load", function() {
@@ -276,6 +277,8 @@ var Pokestop = function(data) {
  this.lng = ko.observable(data.lng);
  this.address = ko.observable(data.address);
  this.category = ko.observable(data.category);
+
+
 
  /* Custom marker image */
  var image = {
