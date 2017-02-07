@@ -234,7 +234,7 @@ function initMap() {
             var errorTimeout = setTimeout(function() {
                 alert("Something went wrong");
             }, 9000);
-
+            /* Used this method to avoid using jQuery */
             function success(response) {
                 infoWindow.setContent('<div><h4 id="pokestop-name">' + pokestop.name() + '</h4>' +
                     '<h5 id="pokestop-address">' + pokestop.address() + '</h5>' +
