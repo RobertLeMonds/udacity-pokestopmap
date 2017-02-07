@@ -105,9 +105,7 @@ var style = [{
 
  function initMap() {
 
-var infoWindow = new google.maps.InfoWindow({
- content: '<div><h4 id="pokestop-name"></h4><p id="pokestop-address"></p><p id="yelp"></p></div>'
-});
+var infoWindow = new google.maps.InfoWindow({});
 
 /* Viewmodel of course */
 var ViewModel = function() {
@@ -155,10 +153,10 @@ var ViewModel = function() {
    '<h5 id="pokestop-address">' + pokestop.address() + '</h5>' +
    '<h6 id="pokestop-category">' + pokestop.category() + '</h6>' +
    '<p id="text">Rating on <a id="yelp-url">yelp</a>: ' +
-   '<img id="yelp"></p></div>';
+   '<img id="yelp"></p></div>' ;
 
   /* SETS CONTENT FOR INFOWINDOW */
-  infoWindow.setContent(infoContent);
+  /* infoWindow.setContent(infoContent); */
   self.getYelpData(pokestop);
 
   /* Re-centers map when marker clicked */
@@ -241,23 +239,37 @@ var ViewModel = function() {
     alert("Something went wrong");
   }, 9000);
 
-  /* AJAX Request to YELP */
-  $.ajax({
+  function success(response) {
+    infoWindow.setContent('<div><h4 id="pokestop-name">' + pokestop.name() + '</h4>' +
+                          '<h5 id="pokestop-address">' + pokestop.address() + '</h5>' +
+                          '<h6 id="pokestop-category">' + pokestop.category() + '</h6>' +
+                          '<img id="yelp">' + response.businesses[0].rating_img_url + '</div>');
+    clearTimeout(errorTimeout);
+  };
+
+  var ajaxSettings = {
    url: yelpURL,
    data: parameters,
    cache: true,
    dataType: "jsonp",
-   success: function(response) {
+   success: success,
     /* Displays YELP rating */
-    clearTimeout(errorTimeout);
 
-/*
+    /*
     $("#yelp").attr("src", response.businesses[0].rating_img_url);
     $("#yelp-url").attr("href", response.businesses[0].url);
-*/
-   }
-  });
+    */
+       /* DATA NOT AVAILABLE FOR INFOWINDOW */
+   error: errorTimeout
+   
+
+  };
+
+ $.ajax(ajaxSettings);
  };
+
+
+
 
  google.maps.event.addDomListener(window, "load", function() {
   self.initialize();
