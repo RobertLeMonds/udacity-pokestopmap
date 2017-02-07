@@ -149,11 +149,7 @@ var ViewModel = function() {
  };
 
  self.pokestopClick = function(pokestop) {
-  var infoContent = '<div><h4 id="pokestop-name">' + pokestop.name() + '</h4>' +
-   '<h5 id="pokestop-address">' + pokestop.address() + '</h5>' +
-   '<h6 id="pokestop-category">' + pokestop.category() + '</h6>' +
-   '<p id="text">Rating on <a id="yelp-url">yelp</a>: ' +
-   '<img id="yelp"></p></div>' ;
+  var infoContent = '' ;
 
   /* SETS CONTENT FOR INFOWINDOW */
   /* infoWindow.setContent(infoContent); */
@@ -243,9 +239,10 @@ var ViewModel = function() {
     infoWindow.setContent('<div><h4 id="pokestop-name">' + pokestop.name() + '</h4>' +
                           '<h5 id="pokestop-address">' + pokestop.address() + '</h5>' +
                           '<h6 id="pokestop-category">' + pokestop.category() + '</h6>' +
-                          '<img id="yelp">' + response.businesses[0].rating_img_url + '</div>');
+                          '<p id="text"> Rating on <a href=" ' + response.businesses[0].url + ' ">yelp</a>: ' +
+                          '<img src="' + response.businesses[0].rating_img_url + '">' + '</div>');
     clearTimeout(errorTimeout);
-  };
+  }
 
   var ajaxSettings = {
    url: yelpURL,
