@@ -2,7 +2,7 @@
 
 ##Get Started
 
-1. Either go to the github pages [site](https://robertlemonds.github.io/udacity-pokestopmap/) or download repository. (UPDATE!! YELP API has issues loading in Github pages, so to view this project correctly please download the zip to view complete work!)
+1. Either go to the github pages [site](https://robertlemonds.github.io/udacity-pokestopmap/) or download repository. **(UPDATE!! YELP API has issues loading in Github pages, so to view this project correctly please download the zip to view complete work!)
 	
 	*If the app is downloaded via Github onto your local machine, navigate to the index.html file and open in your browser.
 
