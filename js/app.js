@@ -1,6 +1,6 @@
 /* Map is Initialized */
 var map;
-//Style credit: Snazzymaps.com
+//Style credit: Snazzymaps.com go snazzy maps!!
 // Made by JulienJ - https://snazzymaps.com/style/70868/pokemon-go-style
 var googleError = function() {
     alert('The map could not be loaded. Please try again later.');
